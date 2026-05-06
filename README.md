@@ -40,3 +40,9 @@ Updated CSS line-height
 - Added About DevPort section
 - Added Features section with three cards
 - Enhanced typography in CSS
+
+## May 6 Updates
+- Added Contact form section
+- Added FAQ section
+- Enhanced form and FAQ styling
+
