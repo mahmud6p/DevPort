@@ -110,6 +110,18 @@ p {
   line-height: 1.8;
 }
 
+form input, form textarea {
+  border: 1px solid #d1d5db;
+  transition: border-color 0.3s;
+}
+form input:focus, form textarea:focus {
+  border-color: #9333ea;
+}
+h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 
 
 
