@@ -46,3 +46,7 @@ Updated CSS line-height
 - Added FAQ section
 - Enhanced form and FAQ styling
 
+## May 7 Updates
+- Added Gallery section with images
+- Added hover effect for gallery images
+- Added JavaScript image click event
