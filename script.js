@@ -1,2 +1,24 @@
 // Commit 1: Show alert
 alert("Welcome to DevPort! Today is May 7.");
+// Commit 3: Added interactive features
+
+// Alert on page load
+alert("Hello Prince! Today is May 7.");
+
+// Show current date in console
+const now = new Date();
+console.log("Current date and time: " + now.toLocaleString());
+
+// Button click event
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.createElement("button");
+  btn.textContent = "Click Me!";
+  btn.style.padding = "10px";
+  btn.style.backgroundColor = "purple";
+  btn.style.color = "white";
+  document.body.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    alert("Button clicked successfully!");
+  });
+});
