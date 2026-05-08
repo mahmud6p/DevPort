@@ -22,3 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Button clicked successfully!");
   });
 });
+
+
+
+// Commit 4: Show skill levels in console
+const skills = {
+  "HTML & CSS": 90,
+  "JavaScript": 80,
+  "Cyber Security": 95
+};
+
+for (const skill in skills) {
+  console.log(`${skill}: ${skills[skill]}%`);
+}
