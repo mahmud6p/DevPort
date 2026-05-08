@@ -157,3 +157,11 @@ p {
   color: #374151;
   font-size: 18px;
 }
+
+
+.team-card {
+  transition: transform 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+}
