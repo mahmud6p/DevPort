@@ -35,3 +35,25 @@ const skills = {
 for (const skill in skills) {
   console.log(`${skill}: ${skills[skill]}%`);
 }
+
+// Commit 4: Add social links dynamically
+document.addEventListener("DOMContentLoaded", () => {
+  const footer = document.createElement("footer");
+  footer.style.padding = "20px";
+  footer.style.textAlign = "center";
+
+  const links = [
+    { name: "GitHub", url: "https://github.com/mahmud6p" },
+    { name: "LinkedIn", url: "https://linkedin.com/in/prince" }
+  ];
+
+  links.forEach(link => {
+    const a = document.createElement("a");
+    a.href = link.url;
+    a.textContent = link.name;
+    a.style.margin = "0 10px";
+    footer.appendChild(a);
+  });
+
+  document.body.appendChild(footer);
+});
