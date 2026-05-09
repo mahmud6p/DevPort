@@ -57,3 +57,9 @@ Updated CSS line-height
 - Added hover effect for team cards
 - Added Skills section with progress bars
 - Added JavaScript skill level console log
+
+## May 9 Updates
+- Added Portfolio section with projects
+- Added hover effect for portfolio cards
+- Updated Testimonials section with new feedback
+- Added dynamic footer social links
