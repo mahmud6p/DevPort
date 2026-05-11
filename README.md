@@ -69,3 +69,9 @@ Updated CSS line-height
 - Embedded Google Map
 - Added newsletter signup form
 - Styled newsletter form
+
+## May 11 Updates
+- Updated Hero section with button
+- Fixed responsive navbar layout
+- Added dark mode toggle button
+- Added dark mode styling
