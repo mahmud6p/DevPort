@@ -191,3 +191,12 @@ button {
     gap: 10px;
   }
 }
+
+ul {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+li {
+  margin-bottom: 8px;
+  color: #374151;
+}
