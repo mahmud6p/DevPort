@@ -200,3 +200,11 @@ li {
   margin-bottom: 8px;
   color: #374151;
 }
+
+article {
+  padding: 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+article h3 {
+  color: #9333ea;
+}
