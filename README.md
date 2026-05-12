@@ -75,3 +75,9 @@ Updated CSS line-height
 - Fixed responsive navbar layout
 - Added dark mode toggle button
 - Added dark mode styling
+
+## May 12 Updates
+- Added Blog section with two posts
+- Styled blog posts
+- Added blog post counter in JavaScript
+- Added footer section
