@@ -93,3 +93,10 @@ Updated CSS line-height
 - Enhanced Hero section with CTA button
 - Added Features section with updated cards
 - Added hover effects and section heading style
+
+
+## May 26 Updates
+- Updated Navbar with Certificates link
+- Enhanced Hero section with Certificates CTA
+- Added Features section with updated cards
+- Added hover effects and section heading style
