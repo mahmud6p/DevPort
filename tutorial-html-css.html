@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Responsive Portfolio | DevPort</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0d0f14;--bg2:#131720;--bg3:#1a2030;--accent:#00e5a0;--accent2:#3b82f6;--text:#e8edf5;--muted:#8892a4;--border:rgba(255,255,255,0.07);--font-head:'Syne',sans-serif;--font-mono:'Space Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-head);line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(13,15,20,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:1.2rem;font-weight:800;color:var(--text);text-decoration:none;}.logo span{color:var(--accent);}
+.back-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.4rem 1rem;border-radius:6px;font-family:var(--font-head);font-size:0.82rem;text-decoration:none;transition:border-color 0.2s,color 0.2s;}.back-btn:hover{border-color:var(--accent);color:var(--accent);}
+.container{max-width:820px;margin:0 auto;padding:100px 5% 60px;}
+.tut-badge{display:inline-block;background:rgba(0,229,160,0.12);border:1px solid rgba(0,229,160,0.3);color:var(--accent);font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem;}
+.tut-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem;}
+.tut-meta{display:flex;gap:1.5rem;font-size:0.82rem;color:var(--muted);margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+h2{font-size:1.3rem;font-weight:700;margin:2rem 0 0.75rem;}
+p{color:#b0bac8;margin-bottom:1rem;font-size:0.95rem;}
+ul{color:#b0bac8;padding-left:1.5rem;margin-bottom:1rem;font-size:0.95rem;}li{margin-bottom:0.4rem;}
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin:1rem 0 1.5rem;overflow-x:auto;}
+.code-block pre{font-family:var(--font-mono);font-size:0.82rem;color:#a8d8a8;line-height:1.7;white-space:pre;}
+.code-label{font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;}
+.tip{background:rgba(59,130,246,0.08);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0;}
+.tip p{color:var(--text);margin:0;font-size:0.9rem;}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:0.75rem;margin-top:3rem;}footer span{color:var(--accent);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="devport.html">Dev<span>Port</span></a>
+  <a class="back-btn" href="devport.html">← Back</a>
+</nav>
+<div class="container">
+  <div class="tut-badge">HTML + CSS</div>
+  <h1 class="tut-title">Create a Responsive Portfolio Layout</h1>
+  <div class="tut-meta"><span>⏱ 1 hr</span><span>🟡 Intermediate</span><span>📁 HTML, CSS</span></div>
+
+  <h2>What You Will Build</h2>
+  <p>একটি সম্পূর্ণ responsive personal portfolio website যেখানে থাকবে: Hero section, About section, Skills section এবং Contact section। Mobile এবং desktop উভয়েই সুন্দর দেখাবে।</p>
+
+  <h2>Step 1: HTML Structure</h2>
+  <div class="code-block">
+    <div class="code-label">index.html</div>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My Portfolio&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;!-- Navigation --&gt;
+  &lt;nav&gt;
+    &lt;div class="nav-logo"&gt;MyPortfolio&lt;/div&gt;
+    &lt;ul class="nav-links"&gt;
+      &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#skills"&gt;Skills&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- Hero Section --&gt;
+  &lt;section class="hero"&gt;
+    &lt;h1&gt;Hi, I'm &lt;span&gt;Your Name&lt;/span&gt;&lt;/h1&gt;
+    &lt;p&gt;Web Developer &amp; Designer&lt;/p&gt;
+    &lt;a href="#contact" class="btn"&gt;Hire Me&lt;/a&gt;
+  &lt;/section&gt;
+
+  &lt;!-- About Section --&gt;
+  &lt;section id="about" class="about"&gt;
+    &lt;h2&gt;About Me&lt;/h2&gt;
+    &lt;p&gt;আমি একজন passionate web developer। HTML, CSS এবং JavaScript দিয়ে সুন্দর website তৈরি করতে ভালোবাসি।&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Skills Section --&gt;
+  &lt;section id="skills" class="skills"&gt;
+    &lt;h2&gt;My Skills&lt;/h2&gt;
+    &lt;div class="skill-grid"&gt;
+      &lt;div class="skill-card"&gt;HTML&lt;/div&gt;
+      &lt;div class="skill-card"&gt;CSS&lt;/div&gt;
+      &lt;div class="skill-card"&gt;JavaScript&lt;/div&gt;
+      &lt;div class="skill-card"&gt;React&lt;/div&gt;
+      &lt;div class="skill-card"&gt;Node.js&lt;/div&gt;
+      &lt;div class="skill-card"&gt;MySQL&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Contact Section --&gt;
+  &lt;section id="contact" class="contact"&gt;
+    &lt;h2&gt;Contact Me&lt;/h2&gt;
+    &lt;p&gt;Email: yourname@gmail.com&lt;/p&gt;
+    &lt;p&gt;Phone: 01XXXXXXXXX&lt;/p&gt;
+  &lt;/section&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+
+  <h2>Step 2: CSS Styling</h2>
+  <div class="code-block">
+    <div class="code-label">style.css</div>
+    <pre>* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: #3b82f6; }
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.hero h1 span { color: #ffd700; }
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.btn {
+  display: inline-block;
+  background: white;
+  color: #667eea;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+/* About Section */
+.about {
+  padding: 5rem 10%;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.about h2 { font-size: 2rem; margin-bottom: 1rem; color: #1f2937; }
+.about p { font-size: 1.05rem; color: #6b7280; max-width: 600px; margin: 0 auto; }
+
+/* Skills Section */
+.skills {
+  padding: 5rem 10%;
+  text-align: center;
+}
+
+.skills h2 { font-size: 2rem; margin-bottom: 2rem; color: #1f2937; }
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: #3b82f6;
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.skill-card:hover { transform: translateY(-3px); }
+
+/* Contact Section */
+.contact {
+  padding: 5rem 10%;
+  background: #1f2937;
+  color: white;
+  text-align: center;
+}
+
+.contact h2 { font-size: 2rem; margin-bottom: 1rem; }
+.contact p { font-size: 1.05rem; opacity: 0.8; margin-bottom: 0.5rem; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .nav-links { gap: 1rem; }
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}</pre>
+  </div>
+
+  <div class="tip"><p>💡 <strong>Tip:</strong> <code>clamp()</code> function ব্যবহার করলে font-size automatically responsive হয় — media query ছাড়াই!</p></div>
+
+  <h2>কী কী শিখলে?</h2>
+  <ul>
+    <li>Flexbox দিয়ে navigation তৈরি</li>
+    <li>CSS Grid দিয়ে skill cards layout</li>
+    <li>Sticky navigation bar</li>
+    <li>Responsive design with media queries</li>
+    <li>CSS transitions এবং hover effects</li>
+    <li>clamp() দিয়ে fluid typography</li>
+  </ul>
+</div>
+<footer><p>© 2026 <span>DevPort</span> — Tutorial: Responsive Portfolio</p></footer>
+</body>
+</html>

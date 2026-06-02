@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MongoDB Tutorial | DevPort</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0d0f14;--bg2:#131720;--bg3:#1a2030;--accent:#00e5a0;--accent2:#3b82f6;--text:#e8edf5;--muted:#8892a4;--border:rgba(255,255,255,0.07);--font-head:'Syne',sans-serif;--font-mono:'Space Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-head);line-height:1.7;}
+nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(13,15,20,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-size:1.2rem;font-weight:800;color:var(--text);text-decoration:none;}.logo span{color:var(--accent);}
+.back-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.4rem 1rem;border-radius:6px;font-family:var(--font-head);font-size:0.82rem;text-decoration:none;transition:border-color 0.2s,color 0.2s;}.back-btn:hover{border-color:var(--accent);color:var(--accent);}
+.container{max-width:820px;margin:0 auto;padding:100px 5% 60px;}
+.tut-badge{display:inline-block;background:rgba(0,229,160,0.12);border:1px solid rgba(0,229,160,0.3);color:var(--accent);font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.12em;padding:0.3rem 0.9rem;border-radius:100px;margin-bottom:1rem;}
+.tut-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;margin-bottom:0.75rem;}
+.tut-meta{display:flex;gap:1.5rem;font-size:0.82rem;color:var(--muted);margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+h2{font-size:1.3rem;font-weight:700;margin:2rem 0 0.75rem;}
+p{color:#b0bac8;margin-bottom:1rem;font-size:0.95rem;}
+ul{color:#b0bac8;padding-left:1.5rem;margin-bottom:1rem;font-size:0.95rem;}li{margin-bottom:0.4rem;}
+.code-block{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin:1rem 0 1.5rem;overflow-x:auto;}
+.code-block pre{font-family:var(--font-mono);font-size:0.82rem;color:#a8d8a8;line-height:1.7;white-space:pre;}
+.code-label{font-family:var(--font-mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;}
+.tip{background:rgba(59,130,246,0.08);border-left:3px solid var(--accent2);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0;}
+.tip p{color:var(--text);margin:0;font-size:0.9rem;}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:0.75rem;margin-top:3rem;}footer span{color:var(--accent);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="devport.html">Dev<span>Port</span></a>
+  <a class="back-btn" href="devport.html">← Back</a>
+</nav>
+<div class="container">
+  <div class="tut-badge">MongoDB</div>
+  <h1 class="tut-title">NoSQL Databases — Getting Started</h1>
+  <div class="tut-meta"><span>⏱ 50 min</span><span>🟢 Beginner</span><span>📁 MongoDB, Mongoose, Node.js</span></div>
+
+  <h2>MongoDB কী?</h2>
+  <p>MongoDB হলো একটি NoSQL database যেখানে data JSON-like format এ (Document) store হয়। MySQL এর মতো table/row নেই — এখানে আছে Collection এবং Document।</p>
+
+  <h2>MySQL vs MongoDB তুলনা</h2>
+  <ul>
+    <li>MySQL: Table → MongoDB: Collection</li>
+    <li>MySQL: Row → MongoDB: Document</li>
+    <li>MySQL: Column → MongoDB: Field</li>
+    <li>MySQL: SQL Query → MongoDB: JSON Query</li>
+  </ul>
+
+  <h2>Step 1: Setup</h2>
+  <div class="code-block">
+    <div class="code-label">Terminal</div>
+    <pre>mkdir mongo-project
+cd mongo-project
+npm init -y
+npm install mongoose express dotenv</pre>
+  </div>
+
+  <h2>Step 2: MongoDB Atlas (Cloud) Connect করো</h2>
+  <p>mongodb.com/atlas এ free account খুলে cluster তৈরি করো। Connection string পাবে এরকম:</p>
+  <div class="code-block">
+    <div class="code-label">.env</div>
+    <pre>MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/mydb
+PORT=3000</pre>
+  </div>
+
+  <h2>Step 3: Mongoose Schema তৈরি করো</h2>
+  <div class="code-block">
+    <div class="code-label">models/Student.js</div>
+    <pre>const mongoose = require('mongoose');
+
+const studentSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  department: {
+    type: String,
+    default: 'CSE'
+  },
+  cgpa: {
+    type: Number,
+    min: 0,
+    max: 4
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Student', studentSchema);</pre>
+  </div>
+
+  <h2>Step 4: CRUD Operations</h2>
+  <div class="code-block">
+    <div class="code-label">server.js</div>
+    <pre>const express = require('express');
+const mongoose = require('mongoose');
+const Student = require('./models/Student');
+require('dotenv').config();
+
+const app = express();
+app.use(express.json());
+
+// MongoDB connect
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB Connected!'))
+  .catch(err => console.log('Error:', err));
+
+// CREATE - নতুন student add
+app.post('/students', async (req, res) => {
+  try {
+    const student = new Student(req.body);
+    await student.save();
+    res.status(201).json(student);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// READ - সব students
+app.get('/students', async (req, res) => {
+  try {
+    const students = await Student.find();
+    res.json(students);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// READ - একটি student
+app.get('/students/:id', async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.id);
+    if (!student) return res.status(404).json({ message: 'Not found' });
+    res.json(student);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// UPDATE - student update
+app.put('/students/:id', async (req, res) => {
+  try {
+    const student = await Student.findByIdAndUpdate(
+      req.params.id, req.body, { new: true }
+    );
+    res.json(student);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// DELETE - student delete
+app.delete('/students/:id', async (req, res) => {
+  try {
+    await Student.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Student deleted!' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
+});</pre>
+  </div>
+
+  <div class="tip"><p>💡 <strong>Tip:</strong> MongoDB Compass ব্যবহার করো — এটা একটি GUI tool যেটা দিয়ে database এর data সহজে দেখা ও manage করা যায়।</p></div>
+
+  <h2>কী কী শিখলে?</h2>
+  <ul>
+    <li>NoSQL vs SQL পার্থক্য</li>
+    <li>Mongoose Schema ও Model তৈরি</li>
+    <li>MongoDB Atlas (cloud) setup</li>
+    <li>async/await দিয়ে CRUD operations</li>
+    <li>Mongoose validation</li>
+  </ul>
+</div>
+<footer><p>© 2026 <span>DevPort</span> — Tutorial: MongoDB Getting Started</p></footer>
+</body>
+</html>
